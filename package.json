@@ -1,0 +1,25 @@
+{
+  "name": "getinhere",
+  "version": "1.0.0",
+  "description": "\"Socket.io chat with gifs\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richHong/Get-in-here.git"
+  },
+  "author": "Richard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richHong/Get-in-here/issues"
+  },
+  "homepage": "https://github.com/richHong/Get-in-here#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "http": "0.0.0",
+    "socket.io": "^1.4.6"
+  }
+}
