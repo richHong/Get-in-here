@@ -21,6 +21,11 @@
     color: yellow;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
+  h2 {
+    text-align: center;
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
   ul{
     overflow: scroll;
   }
@@ -54,6 +59,7 @@
 <body>
 
 <h1>Get in here!</h1>
+<h2>Users connected: <span id='counter'></span></h2>
 <ul id='messages'></ul>
 <form id='form'>
   <input id='msg' placeholder='Type a message' />
@@ -93,6 +99,10 @@
     //Autoscrolls chat list to bottom
     var objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;
+  });
+
+  socket.on('connectCounter', function(connectCounter){
+    $('#counter').text(connectCounter);
   });
 
 </script>
