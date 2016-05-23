@@ -72,7 +72,7 @@
     //Appends message to 
     $('#messages').append($('<li>').text(message));
     //Giphy API call and changes background to url
-    $.getJSON('http://api.giphy.com/v1/gifs/search?q='+message+'&api_key=dc6zaTOxFJmzC', function(results){
+    $.getJSON('https://api.giphy.com/v1/gifs/search?q='+message+'&api_key=dc6zaTOxFJmzC', function(results){
       var url = results.data[0].images.original.url
       $('body').css('background-image','url('+url+')')
     });
