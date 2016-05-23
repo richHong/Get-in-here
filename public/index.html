@@ -89,7 +89,7 @@
     var objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;
   });
-
+  //Changes count when users connect and disconnect
   socket.on('connectCounter', function(connectCounter){
     $('#counter').text(connectCounter);
   });
