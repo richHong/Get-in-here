@@ -68,13 +68,15 @@
   $('#form').on('submit', function(e){
     //Prevents page refresh on submit
     e.preventDefault();
-    //Sets variable message to text box contents
-    var message = $('#msg').val()
-    //emits chat message to server
-    socket.emit('chat message', message);
-    //Resets text box to be empty
-    $('#msg').val('');
-
+    //Checks that text box is not empty
+    if ($('#msg').val() !== ''){
+      //Sets variable message to text box contents
+      var message = $('#msg').val()
+      //Emits chat message to server
+      socket.emit('chat message', message);
+      //Resets text box to be empty
+      $('#msg').val('');
+    }
   });
 
   //Event handler when chat message is received
@@ -83,7 +85,9 @@
     $('#messages').append($('<li>').text(message));
     //Giphy API call and changes background to url
     $.getJSON('https://api.giphy.com/v1/gifs/search?q='+message+'&api_key=dc6zaTOxFJmzC', function(results){
+      //Set variable url to first result's property for original url
       var url = results.data[0].images.original.url
+      //Set background image to url
       $('body').css('background-image','url('+url+')')
     });
     //Autoscrolls chat list to bottom
