@@ -48,7 +48,7 @@
 </head>
 <body>
 
-<h1 class='center outline'>Get in here!</h1>
+<h1 id='airhorn' class='center outline'>Get in here!</h1>
 <h2 class='center outline'>Users connected: <span id='counter'></span></h2>
 <ul id='messages' class='border'></ul>
 <form id='form' class='center'>
@@ -95,6 +95,11 @@
   socket.on('connectCounter', function(connectCounter){
     $('#counter').text(connectCounter);
   });
+
+  //Airhorn easter egg
+  $('#airhorn').on('click', function(){
+    $('body').append('<audio autoplay="true"><source src="http://www.htfr.com/assets/sample/MR223281_60.mp3 "type="audio/mpeg"></audio>');
+  })
 
 </script>
 
