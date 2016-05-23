@@ -21,6 +21,7 @@
   }
   input {
     width: 215px;
+    background: transparent;
   }
   input:focus {
     outline: none;
@@ -51,8 +52,8 @@
 <h2 class='center outline'>Users connected: <span id='counter'></span></h2>
 <ul id='messages' class='border'></ul>
 <form id='form' class='center'>
-  <input id='msg' class='border' placeholder='Type a message' autocomplete='off' />
-  <input class='border' type='submit' value='Send Message'/>
+  <input id='msg' class='border outline' placeholder='Type a message' autocomplete='off' />
+  <input class='border outline' type='submit' value='Send Message'/>
 </form>
 
 <script>
@@ -89,7 +90,7 @@
     var objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;
   });
-  
+
   //Changes count when users connect and disconnect
   socket.on('connectCounter', function(connectCounter){
     $('#counter').text(connectCounter);
