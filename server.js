@@ -13,8 +13,7 @@ var connectCounter = 0;
 io.on('connection', function(socket){
 
   //Increase counter on connection and sends to client
-  connectCounter++;
-  io.emit('connectCounter', connectCounter);
+  io.emit('connectCounter', ++connectCounter);
 
   //Event handler to emit message when chat message comes in
   socket.on('chat message', function(message){
@@ -23,8 +22,7 @@ io.on('connection', function(socket){
 
   //Event handler that reduces count when disconnected
   socket.on('disconnect', function(){
-    connectCounter--;
-    io.emit('connectCounter', connectCounter);
+    io.emit('connectCounter', --connectCounter);
   });
 });
 
