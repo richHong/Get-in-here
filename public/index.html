@@ -2,10 +2,86 @@
 <html>
 <head>
   <title>Get in here!</title>
+
   <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+  <style>
+
+  body {
+    background-color: #cccccc;
+    background-size: cover;
+    height:100%;
+  }
+  h1 {
+    text-align: center;
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+  ul{
+    overflow: scroll;
+  }
+  li {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+  input{
+    border: 3px solid yellow;
+  }
+  #messages {
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    border: 3px solid yellow;
+    border-radius: 10px;
+  }
+  #form {
+    text-align: center;
+  }
+  </style>
+
 </head>
 <body>
-Hello World 2
+
+<h1>Get in here!</h1>
+<ul id='messages'></ul>
+<form id='form'>
+  <input id='msg' placeholder='Type a message' />
+  <input id='sendMessage' type='submit' value='Send Message'/>
+</form>
+
+<script>
+  //Inititalize socket
+  var socket = io();
+
+  //Event handler for submitting message
+  $('#form').on('submit', function(e){
+    //Prevents page refresh on submit
+    e.preventDefault();
+    //Sets variable message to text box contents
+    var message = $('#msg').val()
+    //emits chat message to server
+    socket.emit('chat message', message);
+    //Resets text box to be empty
+    $('#msg').val('');
+
+  });
+
+  //Event handler when chat message is received
+  socket.on('chat message', function(message){
+    //Appends message to 
+    $('#messages').append($('<li>').text(message));
+    //Giphy API call and changes background to url
+    $.getJSON('http://api.giphy.com/v1/gifs/search?q='+message+'&api_key=dc6zaTOxFJmzC', function(results){
+      var url = results.data[0].images.original.url
+      $('body').css('background-image','url('+url+')')
+    });
+    //Autoscrolls chat list to bottom
+    var objDiv = document.getElementById("messages");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  });
+
+</script>
+
 </body>
 </html>
