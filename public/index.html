@@ -57,7 +57,7 @@
 <ul id='messages'></ul>
 <form id='form'>
   <input id='msg' placeholder='Type a message' />
-  <input id='submit' type='submit' value='Send Message'/>
+  <input type='submit' value='Send Message'/>
 </form>
 
 <script>
@@ -72,7 +72,7 @@
     if ($('#msg').val() !== ''){
       //Sets variable message to text box contents
       var message = $('#msg').val()
-      //Emits chat message to server
+      //mits chat message to server
       socket.emit('chat message', message);
       //Resets text box to be empty
       $('#msg').val('');

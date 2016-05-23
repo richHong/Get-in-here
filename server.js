@@ -6,8 +6,10 @@ var port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/public'));
 
+//Initialize socket on connection
 io.on('connection', function(socket){
 
+  //Event handler to emit message when chat message comes in
   socket.on('chat message', function(message){
     io.emit('chat message', message);
   });
